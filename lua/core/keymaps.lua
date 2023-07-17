@@ -13,7 +13,7 @@ inoremap("<C-SPACE>", "<C-x><C-o>")
 -- Save with Ctrl + S
 nnoremap("<C-s>", ":w<CR>")
 -- Close buffer
-nnoremap("<leader>c", ":q<CR>")
+nnoremap("<leader>c", ":bd<CR>")
 
 -- Toggle term
 -- nnoremap("<C-\\>", ":ToggleTerm<CR>")
@@ -160,32 +160,33 @@ if Utils.is_available "gitsings.nvim" then
   nnoremap("<leader>gd", gitsigns.diffthis())
 end
 
-if not Utils.is_available "nvim-dap" then
-  local dap = require("dap")
-  nnoremap("<F5>", dap.continue())
-  nnoremap("<F17>", dap.terminate())
-  nnoremap("<F29>", dap.restart_frame())
-  nnoremap("<F6>", dap.pause())
-  nnoremap("<F9>", dap.toggle_breakpoint())
-  nnoremap("<F10>", dap.step_over())
-  nnoremap("<F11>", dap.step_into())
-  nnoremap("<F23>", dap.step_out())
-  nnoremap("<leader>db", dap.toggle_breakpoint())
-  nnoremap("<leader>dB", dap.clear_breakpoints())
-  nnoremap("<leader>dc", dap.continue())
-  nnoremap("<leader>di", dap.step_into())
-  nnoremap("<leader>do", dap.step_over())
-  nnoremap("<leader>dO", dap.step_out())
-  nnoremap("<leader>dq", dap.close())
-  nnoremap("<leader>dQ", dap.terminate())
-  nnoremap("<leader>dp", dap.pause())
-  nnoremap("<leader>dr", dap.restart_frame())
-  nnoremap("<leader>dR", dap.repl.toggle())
+if Utils.is_available "nvim-dap" then
+  nnoremap("<F5>", "<cmd>DapContinue<CR>")
+  nnoremap("<F17>", "<cmd>DapTerminate<CR>")
+  nnoremap("<F29>", "<cmd>lua require('dap').restart_frame()")
+  nnoremap("<F6>", "<cmd>DapPause<CR>")
+  nnoremap("<F9>", "<cmd>lua require('dap').toggle_breakpoint()<CR>")
+  nnoremap("<F10>", "<cmd>DapStepOver<CR>")
+  nnoremap("<F11>", "<cmd>DapStepInto<CR>")
+  nnoremap("<F23>", "<cmd>DapStepOut<CR>")
+  nnoremap("<leader>db", "<cmd>DapToggleBreakpoint<CR>")
+  nnoremap("<leader>dB", "<cmd>lua require('dap').clear_breakpoints()")
+  nnoremap("<leader>dc", "<cmd>DapContinue<CR>")
+  nnoremap("<leader>di", "<cmd>DapStepInto<CR>")
+  nnoremap("<leader>do", "<cmd>DapStepOver<CR>")
+  nnoremap("<leader>dO", "<cmd>DapStepOut<CR>")
+  nnoremap("<leader>dq", "<cmd>DapClose<CR>")
+  nnoremap("<leader>dQ", "<cmd>DapTerminate<CR>")
+  nnoremap("<leader>dp", "<cmd>DapPause<CR>")
+  nnoremap("<leader>dr", "<cmd>DapRestartFrame<CR>")
+  nnoremap("<leader>dR", "<cmd>DapToggleRepl")
 end
 
 if Utils.is_available "nvim-dap-ui" then
   -- local dap_ui = require("dapui")
   nnoremap("<leader>du", "<cmd>lua require('dapui').toggle()<CR>")
+  nnoremap("<leader>dh", "<cmd>lua require('dapui').expand()<CR>")
+  nnoremap("<leader>dh", "<cmd>lua require('dap.ui.widgets').hover()<CR>")
 end
 
 if Utils.is_available "trouble" then
