@@ -11,9 +11,9 @@ vim.g.maplocalleader = " "
 inoremap("<C-SPACE>", "<C-x><C-o>")
 
 -- Save with Ctrl + S
-nnoremap("<C-s>", ":w<CR>")
+nnoremap("<C-s>", "<cmd>w<CR>")
 -- Close buffer
-nnoremap("<leader>c", ":bd<CR>")
+nnoremap("<leader>c", "<cmd>bd<CR>")
 
 -- Toggle term
 -- nnoremap("<C-\\>", ":ToggleTerm<CR>")
@@ -90,10 +90,10 @@ nnoremap("<C-n>", ":lnext<CR>")
 nnoremap("<C-p>", ":lprev<CR>")
 
 -- Quickfix list
-nnoremap("<leader>co", ":copen<CR>")
-nnoremap("<leader>cc", ":cclose<CR>")
-nnoremap("<C-N>", ":cnext<CR>")
-nnoremap("<C-P>", ":cprev<CR>")
+nnoremap("<leader>qo", ":copen<CR>")
+nnoremap("<leader>qc", ":cclose<CR>")
+nnoremap("<C-]>", ":cnext<CR>")
+nnoremap("<C-[>", ":cprev<CR>")
 
 -- Fugitive
 nnoremap("<leader>g", ":G<CR>")
@@ -133,7 +133,7 @@ if Utils.is_available "lspsaga.nvim" then
 end
 
 -- LSP
---nnoremap("<leader>f", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>")
+nnoremap("<leader>fs", "<cmd>lua vim.lsp.buf.format()<CR>")
 nnoremap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
 nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
 nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
