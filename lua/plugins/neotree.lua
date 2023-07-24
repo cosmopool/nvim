@@ -1,7 +1,7 @@
 local get_icon = require("core.utils").get_icon
 
 local global_commands = {
-  -- system_open = function(state) require("astronvim.utils").system_open(state.tree:get_node():get_id()) end,
+  system_open = function(state) require("astronvim.utils").system_open(state.tree:get_node():get_id()) end,
   parent_or_close = function(state)
     local node = state.tree:get_node()
     if (node.type == "directory" or node:has_children()) and node:is_expanded() then
@@ -79,21 +79,20 @@ local setup = {
       [";"] = "child_or_open",
     },
   },
+  commands = global_commands,
   filesystem = {
     follow_current_file = true,
     hijack_netrw_behavior = "open_current",
     use_libuv_file_watcher = true,
-    commands = global_commands,
   },
-  buffers = { commands = global_commands },
-  git_status = { commands = global_commands },
+  -- buffers = { commands = global_commands },
+  -- git_status = { commands = global_commands },
   event_handlers = {
     { event = "neo_tree_buffer_enter", handler = function(_) vim.opt_local.signcolumn = "auto" end },
     {
       event = "file_opened",
       handler = function(_)
-        --auto close
-        require("neo-tree").close_all()
+        require("neo-tree.command").execute({ action = "close" })
       end
     },
   },
@@ -106,8 +105,9 @@ return {
     { "nvim-lua/plenary.nvim" },
     { "nvim-tree/nvim-web-devicons" }, -- not strictly required, but recommended
     { "MunifTanjim/nui.nvim" },
-    },
+  },
   config = function()
     require("neo-tree").setup(setup)
-  end
+  end,
+  -- opts = setup,
 }
