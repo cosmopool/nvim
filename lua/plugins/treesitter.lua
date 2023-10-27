@@ -17,7 +17,7 @@ local opts = {
 
 return {
   "nvim-treesitter/nvim-treesitter",
-  tag = "v0.9.0",
+  tag = "v0.9.1",
   lazy = false,
   priority = 1000,
   opts = opts,
