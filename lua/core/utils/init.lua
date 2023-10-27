@@ -1,7 +1,14 @@
--- Keymap functions
+--- ### Utilities
+--
+-- Based on AstroNvim Utilities
+-- https://github.com/AstroNvim/AstroNvim
+-- @module astronvim.utils
+-- @copyright 2022
+-- @license GNU General Public License v3.0
 
 local M = {}
 
+-- Keymap functions
 function M.map(mode, lhs, rhs)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, { silent = true })
 end
@@ -56,12 +63,22 @@ function M.exprinoremap(lhs, rhs)
 	M.exprnoremap("i", lhs, rhs)
 end
 
+
+--- Get an icon if it is available and return it
+---@param kind string The kind of icon in astronvim.icons to retrieve
+---@param padding? integer Padding to add to the end of the icon
+---@return string icon
 function M.get_icon(kind, padding)
   if not M.icons then M.icons = require "core.icons" end
   local icon = M.icons and M.icons[kind]
   return icon and icon .. string.rep(" ", padding or 0) or ""
 end
 
+--- Check if a plugin is defined in lazy. Useful with lazy loading when a plugin is not necessarily loaded yet
+---@param plugin string The plugin to search for
+---@param print_debug boolean Print to status line if the plugin is available
+---@param print_all_plugins boolean Print all lazy plugins avilable
+---@return boolean available # Whether the plugin is available
 function M.is_available(plugin, print_debug, print_all_plugins)
   local lazy_config_available, lazy_config = pcall(require, "lazy.core.config")
   if print_debug then print(string.format("%s is available: %s", plugin, lazy_config_available and lazy_config.plugins[plugin] ~= nil)) end
