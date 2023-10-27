@@ -1,4 +1,14 @@
-local setup = {
+local opts = {
+  highlights = {
+    -- Normal = { link = "Normal" },
+    -- NormalNC = { link = "NormalNC" },
+    -- NormalFloat = { link = "NormalFloat" },
+    -- FloatBorder = { link = "FloatBorder" },
+    -- StatusLine = { link = "StatusLine" },
+    -- StatusLineNC = { link = "StatusLineNC" },
+    -- WinBar = { link = "WinBar" },
+    -- WinBarNC = { link = "WinBarNC" },
+  },
   size = 10,
   on_create = function()
     vim.opt.foldcolumn = "0"
@@ -7,17 +17,12 @@ local setup = {
   open_mapping = [[<F7>]],
   shading_factor = 2,
   direction = "float",
-  float_opts = {
-    -- see :h nvim_open_win for details on borders however
-    -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
-    border = "curved",
-    highlights = { border = "Normal", background = "Normal" },
-    winblend = 3,
-  },
+  float_opts = { border = "rounded" },
 }
 
 return {
   "akinsho/toggleterm.nvim",
-  tag = "v2.7.0",
+  tag = "v2.8.0",
   config = true,
+  opts = opts,
 }
