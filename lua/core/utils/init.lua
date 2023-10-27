@@ -76,8 +76,8 @@ end
 
 --- Check if a plugin is defined in lazy. Useful with lazy loading when a plugin is not necessarily loaded yet
 ---@param plugin string The plugin to search for
----@param print_debug boolean Print to status line if the plugin is available
----@param print_all_plugins boolean Print all lazy plugins avilable
+---@param print_debug boolean Whether to print the result
+---@param print_all_plugins boolean Print all plugins avilable
 ---@return boolean available # Whether the plugin is available
 function M.is_available(plugin, print_debug, print_all_plugins)
   local lazy_config_available, lazy_config = pcall(require, "lazy.core.config")
