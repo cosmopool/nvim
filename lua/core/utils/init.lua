@@ -10,15 +10,15 @@ local M = {}
 
 -- Keymap functions
 function M.map(mode, lhs, rhs)
-	vim.api.nvim_set_keymap(mode, lhs, rhs, { silent = true })
+  vim.api.nvim_set_keymap(mode, lhs, rhs, { silent = true })
 end
 
 function M.noremap(mode, lhs, rhs)
-	vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
+  vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
 end
 
 function M.exprnoremap(mode, lhs, rhs)
-	vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true, expr = true })
+  vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true, expr = true })
 end
 
 -- Useful mode-specific shortcuts
@@ -28,41 +28,40 @@ end
 --      modes -> 'n' = NORMAL, 'i' = INSERT, 'x' = 'VISUAL', 'v' = VISUAL + SELECT, 't' = TERMINAL
 
 function M.nmap(lhs, rhs)
-	M.map("n", lhs, rhs)
+  M.map("n", lhs, rhs)
 end
 
 function M.xmap(lhs, rhs)
-	M.map("x", lhs, rhs)
+  M.map("x", lhs, rhs)
 end
 
 function M.nnoremap(lhs, rhs)
-	M.noremap("n", lhs, rhs)
+  M.noremap("n", lhs, rhs)
 end
 
 function M.vnoremap(lhs, rhs)
-	M.noremap("v", lhs, rhs)
+  M.noremap("v", lhs, rhs)
 end
 
 function M.xnoremap(lhs, rhs)
-	M.noremap("x", lhs, rhs)
+  M.noremap("x", lhs, rhs)
 end
 
 function M.inoremap(lhs, rhs)
-	M.noremap("i", lhs, rhs)
+  M.noremap("i", lhs, rhs)
 end
 
 function M.tnoremap(lhs, rhs)
-	M.noremap("t", lhs, rhs)
+  M.noremap("t", lhs, rhs)
 end
 
 function M.exprnnoremap(lhs, rhs)
-	M.exprnoremap("n", lhs, rhs)
+  M.exprnoremap("n", lhs, rhs)
 end
 
 function M.exprinoremap(lhs, rhs)
-	M.exprnoremap("i", lhs, rhs)
+  M.exprnoremap("i", lhs, rhs)
 end
-
 
 --- Get an icon if it is available and return it
 ---@param kind string The kind of icon in astronvim.icons to retrieve
@@ -81,7 +80,8 @@ end
 ---@return boolean available # Whether the plugin is available
 function M.is_available(plugin, print_result, print_all_plugins)
   local lazy_config_available, lazy_config = pcall(require, "lazy.core.config")
-  if print_result then print(string.format("%s is available: %s", plugin, lazy_config_available and lazy_config.plugins[plugin] ~= nil)) end
+  if print_result then print(string.format("%s is available: %s", plugin,
+      lazy_config_available and lazy_config.plugins[plugin] ~= nil)) end
   if print_all_plugins then print(vim.inspect(lazy_config.plugins)) end
   return lazy_config_available and lazy_config.plugins[plugin] ~= nil
 end
@@ -92,6 +92,15 @@ end
 ---@param opts? table The nvim-notify options to use (:help notify-options)
 function M.notify(msg, type, opts)
   vim.schedule(function() vim.notify(msg, type, M.extend_tbl({ title = "Hey!!" }, opts)) end)
+end
+
+--- Call function if a condition is met
+---@param func function The function to run
+---@param condition boolean # Whether to run the function or not
+---@return any|nil result # the result of the function running or nil
+function M.conditional_func(func, condition, ...)
+  -- if the condition is true or no condition is provided, evaluate the function with the rest of the parameters and return the result
+  if condition and type(func) == "function" then return func(...) end
 end
 
 return M
