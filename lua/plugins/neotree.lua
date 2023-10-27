@@ -2,14 +2,9 @@ local utils = require("core.utils")
 local get_icon = utils.get_icon
 
 local global_commands = {
-<<<<<<< HEAD
-  system_open = function(state) require("astronvim.utils").system_open(state.tree:get_node():get_id()) end,
-=======
   system_open = function(state)
-    -- TODO: just use vim.ui.open when dropping support for Neovim <0.10
     (vim.ui.open or require("astronvim.utils").system_open)(state.tree:get_node():get_id())
   end,
->>>>>>> 6dcf5ee (feat: update config neo-tree)
   parent_or_close = function(state)
     local node = state.tree:get_node()
     if (node.type == "directory" or node:has_children()) and node:is_expanded() then
@@ -137,11 +132,6 @@ local setup = {
     hijack_netrw_behavior = "open_current",
     use_libuv_file_watcher = true,
   },
-<<<<<<< HEAD
-  -- buffers = { commands = global_commands },
-  -- git_status = { commands = global_commands },
-=======
->>>>>>> 6dcf5ee (feat: update config neo-tree)
   event_handlers = {
     {
       event = "neo_tree_buffer_enter",
@@ -174,11 +164,6 @@ return {
     vim.fn.sign_define("DiagnosticSignHint",
       { text = "󰌵", texthl = "DiagnosticSignHint" })
     require("neo-tree").setup(setup)
-<<<<<<< HEAD
-  end,
-  -- opts = setup,
-=======
     vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
   end,
->>>>>>> 6dcf5ee (feat: update config neo-tree)
 }
