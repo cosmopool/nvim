@@ -56,9 +56,10 @@ function M.exprinoremap(lhs, rhs)
 	M.exprnoremap("i", lhs, rhs)
 end
 
-function M.get_icon(kind)
+function M.get_icon(kind, padding)
   if not M.icons then M.icons = require "core.icons" end
-  return M.icons[kind] or ""
+  local icon = M.icons and M.icons[kind]
+  return icon and icon .. string.rep(" ", padding or 0) or ""
 end
 
 function M.is_available(plugin, print_debug, print_all_plugins)
