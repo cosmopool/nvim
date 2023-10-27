@@ -100,7 +100,7 @@ local setup = {
 
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  tag = "2.70",
+  tag = "3.11",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
     { "nvim-tree/nvim-web-devicons" }, -- not strictly required, but recommended
