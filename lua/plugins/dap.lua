@@ -37,7 +37,7 @@ return  {
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = { "nvim-dap" },
-    tag = "v3.8.3",
+    tag = "v2.2.0",
     cmd = { "DapInstall", "DapUninstall" },
     --opts = { handlers = {} },
     config = mason_dap_config,
@@ -45,7 +45,7 @@ return  {
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "nvim-dap", "folke/neodev.nvim" },
-    tag = "v3.8.3",
+    tag = "v3.9.1",
     config = function() require("dapui").setup() end,
   },
 }
