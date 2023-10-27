@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- PLUGINS ----------------------------
-require("core.lazy")
+local loaded_lazy, error = pcall(require, "core.lazy")
+if not loaded_lazy then vim.api.nvim_err_writeln("Failed to load Lazy!\n\n" .. error) end
 -- SETTINGS ---------------------------
 if vim.loader then vim.loader.enable() end
 require("core.options")
