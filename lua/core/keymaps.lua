@@ -113,6 +113,7 @@ if Utils.is_available "telescope.nvim" then
   nnoremap("<leader>ff", "<Cmd>Telescope git_files<CR>")
   nnoremap("<leader>f;", "<Cmd>Telescope buffers<CR>")
   nnoremap("<leader>fl", "<Cmd>Telescope flutter commands<CR>")
+  nnoremap("<leader>fr", "<Cmd>Telescope lsp_references<CR>")
   --vim.keymap.set("n", "<leader>fk", function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ")}) end)
 end
 
