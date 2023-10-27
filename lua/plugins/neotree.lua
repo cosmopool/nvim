@@ -1,7 +1,15 @@
-local get_icon = require("core.utils").get_icon
+local utils = require("core.utils")
+local get_icon = utils.get_icon
 
 local global_commands = {
+<<<<<<< HEAD
   system_open = function(state) require("astronvim.utils").system_open(state.tree:get_node():get_id()) end,
+=======
+  system_open = function(state)
+    -- TODO: just use vim.ui.open when dropping support for Neovim <0.10
+    (vim.ui.open or require("astronvim.utils").system_open)(state.tree:get_node():get_id())
+  end,
+>>>>>>> 6dcf5ee (feat: update config neo-tree)
   parent_or_close = function(state)
     local node = state.tree:get_node()
     if (node.type == "directory" or node:has_children()) and node:is_expanded() then
@@ -22,34 +30,72 @@ local global_commands = {
       state.commands.open(state)
     end
   end,
+  copy_selector = function(state)
+    local node = state.tree:get_node()
+    local filepath = node:get_id()
+    local filename = node.name
+    local modify = vim.fn.fnamemodify
+
+    local vals = {
+      ["BASENAME"] = modify(filename, ":r"),
+      ["EXTENSION"] = modify(filename, ":e"),
+      ["FILENAME"] = filename,
+      ["PATH (CWD)"] = modify(filepath, ":."),
+      ["PATH (HOME)"] = modify(filepath, ":~"),
+      ["PATH"] = filepath,
+      ["URI"] = vim.uri_from_fname(filepath),
+    }
+
+    local options = vim.tbl_filter(function(val) return vals[val] ~= "" end, vim.tbl_keys(vals))
+    if vim.tbl_isempty(options) then
+      utils.notify("No values to copy", vim.log.levels.WARN)
+      return
+    end
+    table.sort(options)
+    vim.ui.select(options, {
+      prompt = "Choose to copy to clipboard:",
+      format_item = function(item) return ("%s: %s"):format(item, vals[item]) end,
+    }, function(choice)
+      local result = vals[choice]
+      if result then
+        utils.notify(("Copied: `%s`"):format(result))
+        vim.fn.setreg("+", result)
+      end
+    end)
+  end,
+  find_in_dir = function(state)
+    local node = state.tree:get_node()
+    local path = node:get_id()
+    require("telescope.builtin").find_files {
+      cwd = node.type == "directory" and path or vim.fn.fnamemodify(path, ":h"),
+    }
+  end,
 }
 
 local setup = {
-  enable_diagnostics = true,
+  auto_clean_after_session_restore = true,
   close_if_last_window = true,
+  sources = { "filesystem", "buffers", "git_status" },
   source_selector = {
     winbar = true,
     content_layout = "center",
-    tab_labels = {
-      filesystem = get_icon "FolderClosed" .. " File",
-      buffers = get_icon "DefaultFile" .. " Bufs",
-      git_status = get_icon "Git" .. " Git",
-      diagnostics = get_icon "Diagnostic" .. " Diagnostic",
+    sources = {
+      { source = "filesystem",  display_name = get_icon("FolderClosed", 1) .. "File" },
+      { source = "buffers",     display_name = get_icon("DefaultFile", 1) .. "Bufs" },
+      { source = "git_status",  display_name = get_icon("Git", 1) .. "Git" },
+      { source = "diagnostics", display_name = get_icon("Diagnostic", 1) .. "Diagnostic" },
     },
   },
   default_component_configs = {
-    indent = {
-      padding = 0,
-      indent_size = 2,
-      expander_collapsed = "",
-      expander_expanded = "",
-    },
+    indent = { padding = 0 },
     icon = {
       folder_closed = get_icon "FolderClosed",
       folder_open = get_icon "FolderOpen",
       folder_empty = get_icon "FolderEmpty",
+      folder_empty_open = get_icon "FolderEmpty",
       default = get_icon "DefaultFile",
     },
+    commands = global_commands,
     modified = { symbol = get_icon "FileModified" },
     git_status = {
       symbols = {
@@ -66,29 +112,41 @@ local setup = {
     },
   },
   window = {
-    position = "right",
     width = 35,
+    position = "right",
     mappings = {
       ["<space>"] = false, -- disable space until we figure out which-key disabling
-      ["l"] = false,
-      ["zj"] = "prev_source",
-      ["z;"] = "next_source",
-      o = "open",
+      l = false,
+      ["[b"] = "prev_source",
+      ["]b"] = "next_source",
+      F = utils.is_available "telescope.nvim" and "find_in_dir" or nil,
       O = "system_open",
+      Y = "copy_selector",
       h = "parent_or_close",
-      [";"] = "child_or_open",
+      u = "child_or_open",
+      o = "open",
+    },
+    fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
+      ["<C-k>"] = "move_cursor_down",
+      ["<C-l>"] = "move_cursor_up",
     },
   },
   commands = global_commands,
   filesystem = {
-    follow_current_file = true,
+    follow_current_file = { enabled = true },
     hijack_netrw_behavior = "open_current",
     use_libuv_file_watcher = true,
   },
+<<<<<<< HEAD
   -- buffers = { commands = global_commands },
   -- git_status = { commands = global_commands },
+=======
+>>>>>>> 6dcf5ee (feat: update config neo-tree)
   event_handlers = {
-    { event = "neo_tree_buffer_enter", handler = function(_) vim.opt_local.signcolumn = "auto" end },
+    {
+      event = "neo_tree_buffer_enter",
+      handler = function(_) vim.opt_local.signcolumn = "auto" end,
+    },
     {
       event = "file_opened",
       handler = function(_)
@@ -103,11 +161,24 @@ return {
   tag = "3.11",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
-    { "nvim-tree/nvim-web-devicons" }, -- not strictly required, but recommended
+    { "nvim-tree/nvim-web-devicons" },
     { "MunifTanjim/nui.nvim" },
   },
   config = function()
+    vim.fn.sign_define("DiagnosticSignError",
+      { text = " ", texthl = "DiagnosticSignError" })
+    vim.fn.sign_define("DiagnosticSignWarn",
+      { text = " ", texthl = "DiagnosticSignWarn" })
+    vim.fn.sign_define("DiagnosticSignInfo",
+      { text = " ", texthl = "DiagnosticSignInfo" })
+    vim.fn.sign_define("DiagnosticSignHint",
+      { text = "󰌵", texthl = "DiagnosticSignHint" })
     require("neo-tree").setup(setup)
+<<<<<<< HEAD
   end,
   -- opts = setup,
+=======
+    vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+  end,
+>>>>>>> 6dcf5ee (feat: update config neo-tree)
 }
