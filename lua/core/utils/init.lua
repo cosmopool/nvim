@@ -76,12 +76,12 @@ end
 
 --- Check if a plugin is defined in lazy. Useful with lazy loading when a plugin is not necessarily loaded yet
 ---@param plugin string The plugin to search for
----@param print_debug boolean Whether to print the result
+---@param print_result boolean Whether to print the result
 ---@param print_all_plugins boolean Print all plugins avilable
 ---@return boolean available # Whether the plugin is available
-function M.is_available(plugin, print_debug, print_all_plugins)
+function M.is_available(plugin, print_result, print_all_plugins)
   local lazy_config_available, lazy_config = pcall(require, "lazy.core.config")
-  if print_debug then print(string.format("%s is available: %s", plugin, lazy_config_available and lazy_config.plugins[plugin] ~= nil)) end
+  if print_result then print(string.format("%s is available: %s", plugin, lazy_config_available and lazy_config.plugins[plugin] ~= nil)) end
   if print_all_plugins then print(vim.inspect(lazy_config.plugins)) end
   return lazy_config_available and lazy_config.plugins[plugin] ~= nil
 end
