@@ -69,4 +69,12 @@ function M.is_available(plugin, print_debug, print_all_plugins)
   return lazy_config_available and lazy_config.plugins[plugin] ~= nil
 end
 
+--- Serve a notification with a title of "Hey!!"
+---@param msg string The notification body
+---@param type? number The type of the notification (:help vim.log.levels)
+---@param opts? table The nvim-notify options to use (:help notify-options)
+function M.notify(msg, type, opts)
+  vim.schedule(function() vim.notify(msg, type, M.extend_tbl({ title = "Hey!!" }, opts)) end)
+end
+
 return M
