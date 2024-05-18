@@ -1,6 +1,6 @@
 return {
   "glepnir/lspsaga.nvim",
-  commit = "199eb00822f65b811f43736ba65ab7e16501125d",
+  commit = "d65619007ab4cf1b7c4ade916d8fa648b67487d7",
   event = "BufRead",
   lazy = true,
   dependencies = {

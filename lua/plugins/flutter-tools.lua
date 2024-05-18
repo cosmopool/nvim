@@ -50,14 +50,24 @@ local setup = {
 }
 
 return {
-  "akinsho/flutter-tools.nvim",
-  tag = "v1.5.1",
-  event = "BufRead *.dart",
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'stevearc/dressing.nvim',
+  {
+    "akinsho/flutter-tools.nvim",
+    tag = "v1.9.0",
+    event = "BufRead *.dart",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim",
+    },
+    config = function()
+      require("flutter-tools").setup(setup)
+    end,
   },
-  config = function()
-    require("flutter-tools").setup(setup)
-  end,
+  {
+    "nvim-lua/plenary.nvim",
+    tag = "v0.1.4",
+  },
+  {
+    "stevearc/dressing.nvim",
+    tag = "v2.2.1",
+  },
 }

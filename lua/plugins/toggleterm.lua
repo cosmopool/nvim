@@ -22,7 +22,7 @@ local opts = {
 
 return {
   "akinsho/toggleterm.nvim",
-  tag = "v2.8.0",
+  tag = "v2.11.0",
   config = true,
   opts = opts,
 }

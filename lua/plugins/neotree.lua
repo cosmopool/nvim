@@ -148,11 +148,11 @@ local setup = {
 
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  tag = "3.11",
+  tag = "3.25",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
-    { "nvim-tree/nvim-web-devicons" },
-    { "MunifTanjim/nui.nvim" },
+    { "nvim-tree/nvim-web-devicons", tag = "v0.100" },
+    { "MunifTanjim/nui.nvim", tag = "0.3.0" },
   },
   config = function()
     vim.fn.sign_define("DiagnosticSignError",

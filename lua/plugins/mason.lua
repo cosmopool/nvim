@@ -1,9 +1,10 @@
 return {
   {
     "jay-babu/mason-null-ls.nvim",
-    tag = "v2.1.0",
+    tag = "v2.6.0",
     dependencies = {
-      { "jose-elias-alvarez/null-ls.nvim", commit = "db09b6c691def0038c456551e4e2772186449f35", },
+      {"williamboman/mason.nvim", tag = "v1.10.0"},
+      "nvimtools/none-ls.nvim",
     },
     opts = {
       ensure_installed = {
@@ -14,7 +15,7 @@ return {
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
-    tag = "v2.1.1",
+    tag = "v2.2.2",
     opts = {
       ensure_installed = {
         "bash",

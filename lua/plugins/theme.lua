@@ -36,7 +36,7 @@ end
 return {
   {
     "bluz71/vim-moonfly-colors",
-    commit = "7b0040a86b200cc20f9a12300e3871ddab703e29",
+    -- commit = "7b0040a86b200cc20f9a12300e3871ddab703e29",
     name = "moonfly",
     lazy = false,
     priority = 1000,

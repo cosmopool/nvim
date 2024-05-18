@@ -12,12 +12,13 @@ local opts = {
     "rust",
     "markdown_inline",
     "markdown",
+    "zig",
   },
 }
 
 return {
   "nvim-treesitter/nvim-treesitter",
-  tag = "v0.9.1",
+  tag = "v0.9.2",
   lazy = false,
   priority = 1000,
   opts = opts,
