@@ -19,22 +19,19 @@ nnoremap("<leader>c", "<cmd>bd<CR>")
 -- nnoremap("<C-\\>", ":ToggleTerm<CR>")
 -- nnoremap("<leader>ah", ":ToggleTerm<CR>")
 nnoremap("<F7>", ":ToggleTerm direction=float<CR>")
+nnoremap("<F8>", ":ToggleTerm direction=tab<CR>")
 
 -- Github Copilot autocomplete
 -- vim.g['copilot_no_tab_map'] = false
 -- exprinoremap("<S-Space>", 'copilot#Accept("\\<CR>")')
 
--- Buffer navigation
--- nnoremap('<leader>;', ':bnext<CR>')
--- nnoremap('<leader>j', ':bprevious<CR>')
-nnoremap("z;", ":BufferLineCycleNext<CR>")
-nnoremap("zj", ":BufferLineCyclePrev<CR>")
--- nnoremap("<;", ":BufferNext<CR>")
--- nnoremap("<j", ":BufferPrevious<CR>")
-
 -- Tab navigation
 nnoremap("<leader>:", ":tabn<CR>")
 nnoremap("<leader>J", ":tabp<CR>")
+nnoremap("]b", "<cmd>tabnext<CR>")
+nnoremap("[b", "<cmd>tabprevious<CR>")
+nnoremap("z;", "<cmd>tabnext<CR>")
+nnoremap("zj", "<cmd>tabprevious<CR>")
 
 -- Move around normal mode
 nnoremap("j", "h")
