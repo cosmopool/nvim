@@ -110,7 +110,8 @@ return {
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "nvim-dap", "folke/neodev.nvim" },
-    tag = "v4.0.0",
+    -- tag = "v4.0.0",
+    commit = "a5606bc5958db86f8d92803bea7400ee26a8d7e4",
     config = function() require("dapui").setup() end,
   },
   {
