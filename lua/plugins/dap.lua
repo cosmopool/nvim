@@ -1,6 +1,34 @@
 local dap_config = function()
   local dap = require("dap")
 
+  dap.adapters.lldb = {
+    type = "executable",
+    command = "/usr/bin/lldb-dap",
+    name = "lldb"
+  }
+  dap.configurations.zig = {
+    {
+      name = "Launch New Build",
+      type = "lldb",
+      request = "launch",
+      program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}",
+      cwd = "${workspaceFolder}",
+      stopOnEntry = false,
+      args = {},
+    }
+  }
+  dap.configurations.zig = {
+    {
+      name = "Launch",
+      type = "lldb",
+      request = "launch",
+      program = "zig build run",
+      cwd = "${workspaceFolder}",
+      stopOnEntry = false,
+      args = {},
+    }
+  }
+
   dap.configurations.go = {
     {
       type = "go",
