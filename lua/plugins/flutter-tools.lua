@@ -52,7 +52,7 @@ local setup = {
 return {
   {
     "akinsho/flutter-tools.nvim",
-    tag = "v1.9.0",
+    tag = "v1.12.0",
     event = "BufRead *.dart",
     dependencies = {
       "nvim-lua/plenary.nvim",

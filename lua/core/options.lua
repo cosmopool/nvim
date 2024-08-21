@@ -27,6 +27,8 @@ vim.o.splitbelow         = true
 vim.o.splitright         = true
 vim.o.scrolloff          = 12                            -- Minimum offset in lines to screen borders
 vim.o.sidescrolloff      = 8
+vim.o.exrc               = true
+vim.o.secure             = true
 -- vim.o.mouse              = "a"
 
 ---------- VIM SPECIFIC ----------
