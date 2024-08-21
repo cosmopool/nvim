@@ -1,4 +1,5 @@
 local setup = {
+  fvm = true,
   ui = {
     border = "rounded",
     notification_style = "native",
