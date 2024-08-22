@@ -70,7 +70,7 @@ local global_commands = {
 local setup = {
   auto_clean_after_session_restore = true,
   close_if_last_window = true,
-  sources = { "filesystem", "buffers", "git_status" },
+  sources = { "filesystem", "buffers", "git_status", "diagnostics" },
   source_selector = {
     winbar = true,
     content_layout = "center",
@@ -120,6 +120,7 @@ local setup = {
       h = "parent_or_close",
       u = "child_or_open",
       o = "open",
+      ["?"] = "show_help",
     },
     fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
       ["<C-k>"] = "move_cursor_down",
