@@ -1,5 +1,6 @@
 local setup = {
   fvm = true,
+  root_patterns = { ".git", "pubspec.yaml" },
   ui = {
     border = "rounded",
     notification_style = "native",
@@ -7,31 +8,30 @@ local setup = {
   decorations = {
     statusline = {
       app_version = false,
-      device = false,
-      project_config = false,
+      device = true,
+      project_config = true,
     }
   },
-  root_patterns = { ".git", "pubspec.yaml" },
   debugger = {
     enabled = true,
     run_via_dap = true,
     -- if empty dap will not stop on any exceptions, otherwise it will stop on those specified
     -- see |:help dap.set_exception_breakpoints()| for more info
-    -- exception_breakpoints = {}
+    exception_breakpoints = {},
   },
   dev_log = {
     enabled = true,
-    notify_errors = false,
+    notify_errors = true,
     open_cmd = "tabedit",
   },
   widget_guides = {
     enabled = false,
   },
-  -- closing_tags = {
-  --   highlight = "ErrorMsg", -- highlight for the closing tag
-  --   prefix = ">",           -- character to use for close tag e.g. > Widget
-  --   enabled = true          -- set to false to disable
-  -- },
+  closing_tags = {
+    -- highlight = "ErrorMsg",
+    prefix = "> ",
+    enabled = true,
+  },
   lsp = {
     color = {
       enabled = true,
@@ -69,6 +69,6 @@ return {
   },
   {
     "stevearc/dressing.nvim",
-    tag = "v2.2.1",
+    tag = "v2.2.2",
   },
 }
