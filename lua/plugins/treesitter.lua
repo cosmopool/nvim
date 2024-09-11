@@ -9,12 +9,12 @@ local setup = {
     "yaml",
     "v",
     "python",
-    "swift",
     "c",
     "rust",
     "markdown_inline",
     "markdown",
     "zig",
+    "hyprlang",
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -40,7 +40,7 @@ local setup = {
 
 return {
   "nvim-treesitter/nvim-treesitter",
-  tag = "v0.9.2",
+  commit = "58030e6d6f1d6609b43dcb765d54539dcc6a1a76",
   lazy = false,
   priority = 1000,
   config = function()
