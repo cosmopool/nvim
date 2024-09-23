@@ -1,8 +1,8 @@
 local setup_func = function()
   local lsp = require("lsp-zero").preset({})
 
-  lsp.on_attach(function(client, bufnr)
-    lsp.default_keymaps({buffer = bufnr})
+  lsp.on_attach(function(_, bufnr)
+    lsp.default_keymaps({ buffer = bufnr })
   end)
 
   lsp.ensure_installed({
@@ -24,16 +24,15 @@ local setup_func = function()
     "rust_analyzer",
   })
 
-
   local dart_lsp = lsp.build_options("dartls", {})
-     require("flutter-tools").setup({
-       lsp = {
-         capabilities = dart_lsp.capabilities
-       }
-     })
+  require("flutter-tools").setup({
+    lsp = {
+      capabilities = dart_lsp.capabilities
+    }
+  })
 
   local cmp = require("cmp")
-  local cmp_select = {behavior = cmp.SelectBehavior.Insert}
+  local cmp_select = { behavior = cmp.SelectBehavior.Insert }
   local cmp_mappings = lsp.defaults.cmp_mappings({
     ["<Tab>"] = cmp.mapping.select_next_item(cmp_select),
     ["<S-Tab>"] = cmp.mapping.select_prev_item(cmp_select),
