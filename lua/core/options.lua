@@ -9,8 +9,6 @@ vim.o.termguicolors      = true                          -- Use true colors, req
 vim.o.guicursor          = "i-n-v-c-sm:block,ci-ve:ver25,r-cr-o:hor20"
 vim.wo.number            = true
 vim.wo.relativenumber    = true
-vim.wo.signcolumn        = "yes"
-vim.o.colorcolumn        = "80"
 vim.wo.cursorline        = true
 
 ---------- BEHAVIOUR ----------
