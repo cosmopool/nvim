@@ -5,8 +5,6 @@ local setup_func = function()
     lsp.default_keymaps({buffer = bufnr})
   end)
 
-  require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-
   lsp.ensure_installed({
     --"sumneko_lua",
     "lua_ls",
@@ -52,26 +50,16 @@ local setup_func = function()
 end
 
 return {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
-    name = "lsp-zero",
-    lazy = false,
-    priority = 1000,
-    dependencies = {
-      -- LSP Support
-      { "neovim/nvim-lspconfig", commit = "ba74226cac83eacb435827e028f810212147937b" },
-      {
-        "williamboman/mason.nvim",
-        tag = "v1.6.0",
-        opts = { PATH = "append" },
-        build = function() pcall(vim.cmd, "MasonUpdate") end,
-      },
-      { "williamboman/mason-lspconfig.nvim", tag = "v1.11.0" },
-
-      -- Autocompletion
-      {"hrsh7th/nvim-cmp"},
-      {"hrsh7th/cmp-nvim-lsp"},
-      {"L3MON4D3/LuaSnip"},
-    },
-    config = setup_func
-  }
+  "VonHeikemen/lsp-zero.nvim",
+  branch = "v2.x",
+  name = "lsp-zero",
+  lazy = false,
+  priority = 1000,
+  dependencies = {
+    -- Autocompletion
+    { "hrsh7th/nvim-cmp" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "L3MON4D3/LuaSnip" },
+  },
+  config = setup_func
+}
