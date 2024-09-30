@@ -86,7 +86,7 @@ end
 
 return {
   "mfussenegger/nvim-dap",
-  tag = "0.7.0",
+  tag = "0.8.0",
   enabled = vim.fn.has("win32") == 0,
   dependencies = {
     "rcarriga/nvim-dap-ui",
