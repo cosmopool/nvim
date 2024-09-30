@@ -70,7 +70,10 @@ local global_commands = {
 local setup = {
   auto_clean_after_session_restore = true,
   close_if_last_window = true,
-  sources = { "filesystem", "buffers", "git_status", "diagnostics" },
+  enable_diagnostics = true,
+  enable_git_status = true,
+  sort_case_insensitive = true,
+  sources = { "filesystem", "buffers", "git_status" },
   source_selector = {
     winbar = true,
     content_layout = "center",
@@ -149,10 +152,10 @@ local setup = {
 
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  tag = "3.26",
+  tag = "3.27",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
-    { "nvim-tree/nvim-web-devicons", commit = "5be6c4e685618b99c3210a69375b38a1202369b4" },
+    { "nvim-tree/nvim-web-devicons", commit = "6b53401918a9033a41159d012160c5fb5eb249ae" },
     { "MunifTanjim/nui.nvim",        tag = "0.3.0" },
   },
   config = function()
