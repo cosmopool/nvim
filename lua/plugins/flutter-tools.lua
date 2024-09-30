@@ -17,7 +17,7 @@ local setup = {
     run_via_dap = true,
     -- if empty dap will not stop on any exceptions, otherwise it will stop on those specified
     -- see |:help dap.set_exception_breakpoints()| for more info
-    exception_breakpoints = {},
+    -- exception_breakpoints = {},
   },
   dev_log = {
     enabled = true,
@@ -45,7 +45,6 @@ local setup = {
       completeFunctionCalls = true,
       enableSnippets = true,
       updateImportsOnRename = true,
-      -- analysisExcludedFolders = {"<path-to-flutter-sdk-packages>"},
     },
   },
 }
