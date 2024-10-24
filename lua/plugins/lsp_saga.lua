@@ -8,6 +8,10 @@ return {
     { "nvim-treesitter/nvim-treesitter" }
   },
   config = function()
-    require("lspsaga").setup({})
+    require("lspsaga").setup({
+      code_action = {
+        extend_gitsigns = true,
+      },
+    })
   end,
 }
