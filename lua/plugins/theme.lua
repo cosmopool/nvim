@@ -33,18 +33,67 @@ local onedark_config = function()
   }
 end
 
+local function config_cyberdream()
+  local imported, cyberdream = pcall(require, "cyberdream")
+  if (not imported) then
+    return
+  end
+
+  cyberdream.setup({
+    -- Enable transparent background
+    transparent = true,
+    -- Modern borderless telescope theme - also applies to fzf-lua
+    borderless_telescope = true,
+    -- Replace all fillchars with ' ' for the ultimate clean look
+    hide_fillchars = true,
+    italic_comments = true,
+    terminal_colors = true,
+    cache = true,
+
+    extensions = {
+      alpha = true,
+      blinkcmp = true,
+      cmp = true,
+      dashboard = true,
+      fzflua = true,
+      gitpad = true,
+      gitsigns = true,
+      grapple = true,
+      grugfar = true,
+      heirline = true,
+      helpview = true,
+      hop = true,
+      indentblankline = true,
+      kubectl = true,
+      lazy = true,
+      leap = true,
+      markdown = true,
+      markview = true,
+      mini = true,
+      noice = true,
+      neogit = true,
+      notify = true,
+      rainbow_delimiters = true,
+      telescope = true,
+      treesitter = true,
+      treesittercontext = true,
+      trouble = true,
+      whichkey = true,
+    },
+  })
+end
+
 return {
-  {
-    "bluz71/vim-moonfly-colors",
-    -- commit = "7b0040a86b200cc20f9a12300e3871ddab703e29",
-    name = "moonfly",
-    lazy = false,
-    priority = 1000,
-  },
   {
     "navarasu/onedark.nvim",
     lazy = false,
     priority = 1000,
     config = onedark_config,
+  },
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+    config = config_cyberdream,
   },
 }
