@@ -10,6 +10,7 @@ local setup = {
     "v",
     "python",
     "c",
+    "cpp",
     "rust",
     "markdown_inline",
     "markdown",
