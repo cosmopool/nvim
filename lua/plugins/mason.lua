@@ -23,7 +23,7 @@ return {
     "jay-babu/mason-nvim-dap.nvim",
     tag = "v2.4.0",
     opts = {
-      ensure_installed = { "bash", "python" },
+      ensure_installed = { "bash", "python", "codelldb" },
     },
   },
 }
