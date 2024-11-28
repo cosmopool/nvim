@@ -45,10 +45,10 @@ vnoremap("l", "k")
 vnoremap(";", "l")
 
 -- Move around windows
-nnoremap("<C-h>", "<C-w>h")
-nnoremap("<C-j>", "<C-w>j")
-nnoremap("<C-k>", "<C-w>k")
-nnoremap("<C-l>", "<C-w>l")
+nnoremap("<C-j>", "<C-w>h")
+nnoremap("<C-k>", "<C-w>j")
+nnoremap("<C-l>", "<C-w>k")
+nnoremap("<C-;>", "<C-w>l")
 
 -- Splits
 nnoremap("<leader>ws", ":split<CR>")
