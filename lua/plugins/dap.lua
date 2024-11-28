@@ -108,35 +108,6 @@ return {
     config = mason_dap_config,
   },
   {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "nvim-dap", "folke/neodev.nvim" },
-    -- tag = "v4.0.0",
-    commit = "a5606bc5958db86f8d92803bea7400ee26a8d7e4",
-    event = "VeryLazy",
-    config = function()
-      local imported, dapui = pcall(require, "dapui")
-      if not imported then
-        return
-      end
-
-      local imported, dap = pcall(require, "dapui")
-      if not imported then
-        return
-      end
-
-      dapui.setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.after.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.after.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
-    end,
-  },
-  {
     "nvim-neotest/nvim-nio",
     tag = "v1.9.3",
   }
