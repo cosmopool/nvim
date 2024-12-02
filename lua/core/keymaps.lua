@@ -105,9 +105,9 @@ nnoremap("<leader>D", "<Cmd>lua vim.diagnostic.setloclist()<CR>")
 nnoremap("<leader><A-d>", "<Cmd>lua vim.diagnostic.setqflist()<CR>")
 
 if Utils.is_available "telescope.nvim" then
-  nnoremap("<leader>fa", "<Cmd>Telescope find_files<CR>")
+  nnoremap("<leader>ff", "<Cmd>Telescope find_files<CR>")
   nnoremap("<leader>fw", "<Cmd>Telescope live_grep<CR>")
-  nnoremap("<leader>ff", "<Cmd>Telescope git_files<CR>")
+  nnoremap("<leader>fa", "<Cmd>Telescope git_files<CR>")
   nnoremap("<leader>f;", "<Cmd>Telescope buffers<CR>")
   nnoremap("<leader>fl", "<Cmd>Telescope flutter commands<CR>")
   nnoremap("<leader>fr", "<Cmd>Telescope lsp_references<CR>")
