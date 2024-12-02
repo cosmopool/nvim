@@ -10,6 +10,7 @@ vim.o.guicursor          = "i-n-v-c-sm:block,ci-ve:ver25,r-cr-o:hor20"
 vim.wo.number            = true
 vim.wo.relativenumber    = true
 vim.wo.cursorline        = true
+vim.o.signcolumn         = 'yes'
 
 ---------- BEHAVIOUR ----------
 vim.o.hlsearch           = true
@@ -34,7 +35,7 @@ vim.o.hidden             = true                          -- Do not save when swi
 vim.o.fileencoding       = "utf-8"
 vim.o.spell              = false
 vim.o.spelllang          = "en_us"
-vim.opt.completeopt      = "menu,menuone,noselect"
+vim.o.completeopt      = "menu,menuone,noselect"
 vim.o.wildmode           = "longest,full"                -- Display auto-complete in Command Mode
 vim.o.updatetime         = 300                           -- Delay until write to Swap and HoldCommand event
 
