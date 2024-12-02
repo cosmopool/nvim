@@ -124,10 +124,8 @@ if Utils.is_available "lspsaga.nvim" then
   nnoremap("gx", ":<c-u>Lspsaga range_code_action<cr>")
   nnoremap("gh", "<cmd>Lspsaga hover_doc<cr>")
   nnoremap("go", "<cmd>Lspsaga show_line_diagnostics<cr>")
-  nnoremap("gj", "<cmd>Lspsaga diagnostic_jump_next<cr>")
-  nnoremap("gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
-  --nnoremap("<C-l>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>")
-  --nnoremap("<C-k>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>")
+  nnoremap("]d", "<cmd>Lspsaga diagnostic_jump_next<cr>")
+  nnoremap("[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
 end
 
 -- LSP
@@ -135,12 +133,11 @@ nnoremap("<leader>fs", "<cmd>lua vim.lsp.buf.format()<CR>")
 nnoremap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
 nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
 nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-nnoremap("gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+nnoremap("gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 nnoremap("gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 nnoremap("gte", "<cmd>lua vim.diagnostic.open_float()<CR>")
-nnoremap("[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-nnoremap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
 nnoremap("<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
+nnoremap('gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 
 -- GITSIGNS
 if Utils.is_available "gitsings.nvim" then
