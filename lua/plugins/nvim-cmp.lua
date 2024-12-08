@@ -1,21 +1,3 @@
-local function select_and_insert(cmp, luasnip)
-  return cmp.mapping({
-    i = function(fallback)
-      if cmp.visible() and cmp.get_active_entry() then
-        if luasnip.expandable() then
-          luasnip.expand()
-        else
-          cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-        end
-      else
-        fallback()
-      end
-    end,
-    s = cmp.mapping.confirm({ select = true }),
-    c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-  })
-end
-
 local function next_with_selection(cmp, luasnip)
   return cmp.mapping(function(fallback)
     if cmp.visible() then
@@ -59,7 +41,7 @@ local function config()
     },
     select = { behavior = cmp.SelectBehavior.Insert },
     mapping = cmp.mapping.preset.insert({
-      ["<CR>"] = select_and_insert(cmp, luasnip),
+      ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
       ["<down>"] = next_with_selection(cmp, luasnip),
       ["<up>"] = prev_with_selection(cmp, luasnip),
     })
