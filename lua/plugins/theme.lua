@@ -43,7 +43,7 @@ local function config_cyberdream()
     -- Enable transparent background
     transparent = true,
     -- Modern borderless telescope theme - also applies to fzf-lua
-    borderless_telescope = true,
+    borderless_pickers = true,
     -- Replace all fillchars with ' ' for the ultimate clean look
     hide_fillchars = true,
     italic_comments = true,
