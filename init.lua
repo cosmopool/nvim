@@ -7,6 +7,10 @@ if not loaded_lazy then vim.api.nvim_err_writeln("Failed to load Lazy!\n\n" .. e
 if vim.loader then vim.loader.enable() end
 require("core.options")
 require("core.keymaps")
+local imported, no_neck_pain = pcall(require, "no-neck-pain")
+if imported then
+  no_neck_pain.enable()
+end
 -- THEME ------------------------------
 vim.cmd.colorscheme("onedark")
 -- vim.cmd.colorscheme("cyberdream")
