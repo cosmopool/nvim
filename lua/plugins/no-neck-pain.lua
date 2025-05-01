@@ -1,5 +1,5 @@
 local config = {
-  width = 120,
+  width = 130,
   integrations = {
     NeoTree = {
       position = "right",
