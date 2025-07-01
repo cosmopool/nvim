@@ -150,26 +150,24 @@ local setup = {
   },
 }
 
-return {}
-
--- return {
---   "nvim-neo-tree/neo-tree.nvim",
---   tag = "3.27",
---   dependencies = {
---     { "nvim-lua/plenary.nvim" },
---     { "nvim-tree/nvim-web-devicons", commit = "6b53401918a9033a41159d012160c5fb5eb249ae" },
---     { "MunifTanjim/nui.nvim",        tag = "0.3.0" },
---   },
---   config = function()
---     vim.fn.sign_define("DiagnosticSignError",
---       { text = " ", texthl = "DiagnosticSignError" })
---     vim.fn.sign_define("DiagnosticSignWarn",
---       { text = " ", texthl = "DiagnosticSignWarn" })
---     vim.fn.sign_define("DiagnosticSignInfo",
---       { text = " ", texthl = "DiagnosticSignInfo" })
---     vim.fn.sign_define("DiagnosticSignHint",
---       { text = "󰌵", texthl = "DiagnosticSignHint" })
---     require("neo-tree").setup(setup)
---     vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
---   end,
--- }
+return {
+  "nvim-neo-tree/neo-tree.nvim",
+  tag = "3.33",
+  dependencies = {
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-tree/nvim-web-devicons", commit = "6b53401918a9033a41159d012160c5fb5eb249ae" },
+    { "MunifTanjim/nui.nvim",        tag = "0.3.0" },
+  },
+  config = function()
+    vim.fn.sign_define("DiagnosticSignError",
+      { text = " ", texthl = "DiagnosticSignError" })
+    vim.fn.sign_define("DiagnosticSignWarn",
+      { text = " ", texthl = "DiagnosticSignWarn" })
+    vim.fn.sign_define("DiagnosticSignInfo",
+      { text = " ", texthl = "DiagnosticSignInfo" })
+    vim.fn.sign_define("DiagnosticSignHint",
+      { text = "󰌵", texthl = "DiagnosticSignHint" })
+    require("neo-tree").setup(setup)
+    vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+  end,
+}
