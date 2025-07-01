@@ -33,53 +33,53 @@ local onedark_config = function()
   }
 end
 
-local function config_cyberdream()
-  local imported, cyberdream = pcall(require, "cyberdream")
+local function config_nordic()
+  local imported, theme = pcall(require, "nordic")
   if (not imported) then
     return
   end
 
-  cyberdream.setup({
-    -- Enable transparent background
-    transparent = true,
-    -- Modern borderless telescope theme - also applies to fzf-lua
-    borderless_pickers = true,
-    -- Replace all fillchars with ' ' for the ultimate clean look
-    hide_fillchars = true,
+  theme.setup({
+    -- This callback can be used to override the colors used in the base palette.
+    -- on_palette = function(palette) end,
+    -- This callback can be used to override the colors used in the extended palette.
+    -- after_palette = function(palette) end,
+    -- This callback can be used to override highlights before they are applied.
+    -- on_highlight = function(highlights, palette) end,
+    bold_keywords = true,
     italic_comments = true,
-    terminal_colors = true,
-    cache = true,
-
-    extensions = {
-      alpha = true,
-      blinkcmp = true,
-      cmp = true,
-      dashboard = true,
-      fzflua = true,
-      gitpad = true,
-      gitsigns = true,
-      grapple = true,
-      grugfar = true,
-      heirline = true,
-      helpview = true,
-      hop = true,
-      indentblankline = true,
-      kubectl = true,
-      lazy = true,
-      leap = true,
-      markdown = true,
-      markview = true,
-      mini = true,
-      noice = true,
-      neogit = true,
-      notify = true,
-      rainbow_delimiters = true,
-      telescope = true,
-      treesitter = true,
-      treesittercontext = true,
-      trouble = true,
-      whichkey = true,
+    transparent = {
+      bg = true,
+      float = true,
     },
+    -- Enable brighter float border.
+    bright_border = true,
+    -- Reduce the overall amount of blue in the theme (diverges from base Nord).
+    reduced_blue = true,
+    -- Swap the dark background with the normal one.
+    swap_backgrounds = false,
+    cursorline = {
+      -- Bold font in cursorline.
+      bold = false,
+      -- Bold cursorline number.
+      bold_number = true,
+      -- Available styles: "dark", "light".
+      theme = "dark",
+      -- Blending the cursorline bg with the buffer bg.
+      blend = 0.85,
+    },
+    noice = {
+      style = "classic", -- Available: `classic`, `flat`.
+    },
+    telescope = {
+      style = "flat", -- Available: `classic`, `flat`.
+    },
+    leap = {
+      dim_backdrop = false,
+    },
+    ts_context = {
+      dark_background = true,
+    }
   })
 end
 
@@ -91,9 +91,9 @@ return {
     config = onedark_config,
   },
   {
-    "scottmckendry/cyberdream.nvim",
+    'AlexvZyl/nordic.nvim',
     lazy = false,
     priority = 1000,
-    config = config_cyberdream,
+    config = config_nordic,
   },
 }
