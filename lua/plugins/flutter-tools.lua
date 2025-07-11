@@ -52,7 +52,7 @@ local setup = {
 return {
   {
     "akinsho/flutter-tools.nvim",
-    tag = "v1.12.0",
+    tag = "v1.14.0",
     event = "BufRead *.dart",
     ft = "dart",
     dependencies = {
@@ -69,6 +69,6 @@ return {
   },
   {
     "stevearc/dressing.nvim",
-    tag = "v2.2.2",
+    tag = "v3.1.1",
   },
 }

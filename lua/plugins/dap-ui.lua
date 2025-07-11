@@ -67,8 +67,6 @@ return {
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "nvim-dap", "folke/lazydev.nvim" },
-    -- tag = "v4.0.0",
-    commit = "a5606bc5958db86f8d92803bea7400ee26a8d7e4",
     event = "VeryLazy",
     config = config,
   },

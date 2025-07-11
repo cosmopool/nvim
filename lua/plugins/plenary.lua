@@ -1,5 +1,4 @@
 return {
   "nvim-lua/plenary.nvim",
-  -- commit = "bda256fab0eb66a15e8190937e417e6a14ee5d72",
-  tag = "v0.1.4",
+  commit = "857c5ac632080dba10aae49dba902ce3abf91b35",
 }

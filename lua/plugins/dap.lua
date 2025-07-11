@@ -86,7 +86,7 @@ end
 
 return {
   "mfussenegger/nvim-dap",
-  tag = "0.8.0",
+  tag = "0.10.0",
   enabled = vim.fn.has("win32") == 0,
   dependencies = {
     "rcarriga/nvim-dap-ui",
@@ -95,20 +95,18 @@ return {
   },
   {
     "rcarriga/cmp-dap",
-    commit = "d16f14a210cd28988b97ca8339d504533b7e09a4",
     dependencies = { "nvim-cmp" },
     config = cmd_dap_config,
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = { "nvim-dap" },
-    tag = "v2.2.2",
+    tag = "v2.5.1",
     cmd = { "DapInstall", "DapUninstall" },
-    --opts = { handlers = {} },
     config = mason_dap_config,
   },
   {
     "nvim-neotest/nvim-nio",
-    tag = "v1.9.3",
+    tag = "v1.10.1",
   }
 }

@@ -50,14 +50,7 @@ end
 
 return {
   "hrsh7th/nvim-cmp",
-  commit = "ca4d3330d386e76967e53b85953c170658255ecb",
+  tag = "v0.0.2",
   event = { "InsertEnter", "CmdlineEnter" },
-  -- opts = function(_, opts)
-  --   opts.sources = opts.sources or {}
-  --   table.insert(opts.sources, {
-  --     name = "lazydev",
-  --     group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-  --   })
-  -- end,
   config = config,
 }

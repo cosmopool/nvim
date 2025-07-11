@@ -1,13 +1,9 @@
 local function mason_lspconfig()
-  local lsp_zero = require('lsp-zero')
-
   require('mason-lspconfig').setup({
     ensure_installed = {
       "lua_ls",
       "zk",
-      "vls",
       "zls",
-      "lemminx",
       "sqlls",
       "jsonls",
       "clangd",
@@ -26,44 +22,30 @@ local function mason_lspconfig()
       function(server_name)
         require('lspconfig')[server_name].setup({})
       end,
-
-      -- this is the "custom handler" for `jdtls`
-      -- noop is an empty function that doesn't do anything
-      -- dartls = lsp_zero.noop,
-      lua_ls = function()
-        require('lspconfig').lua_ls.setup({
-          on_init = function(client)
-            lsp_zero.nvim_lua_settings(client, {})
-          end,
-        })
-      end,
-      -- sourcekit = function()
-      --   require('lspconfig').sourcekit.setup({
-      --     capabilities = {
-      --       workspace = {
-      --         didChangeWatchedFiles = {
-      --           dynamicRegistration = true,
-      --         },
-      --       },
-      --     },
-      --   })
-      -- end
     }
   })
 end
+
 return {
   {
     "williamboman/mason.nvim",
-    tag = "v1.10.0",
+    tag = "v2.0.0",
     opts = { PATH = "append" },
-    build = function() pcall(vim.cmd, "MasonUpdate") end,
     config = function()
-      require('mason').setup({})
+      require("mason").setup({
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+          }
+        }
+      })
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    tag = "v1.31.0",
+    tag = "v2.0.0",
     config = mason_lspconfig,
   },
   {
@@ -78,7 +60,7 @@ return {
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
-    tag = "v2.4.0",
+    tag = "v2.5.1",
     opts = {
       ensure_installed = { "bash", "python", "codelldb" },
     },
