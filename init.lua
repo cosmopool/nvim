@@ -16,4 +16,4 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
 -- LSP ------------------------------
 local lsp = require("core.utils.lsp")
-lsp.setup_servers()
+lsp.setup_all()
