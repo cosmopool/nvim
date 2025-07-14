@@ -95,7 +95,6 @@ return {
   },
   {
     "rcarriga/cmp-dap",
-    dependencies = { "nvim-cmp" },
     config = cmd_dap_config,
   },
   {

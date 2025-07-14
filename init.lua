@@ -13,7 +13,3 @@ require("core.keymaps")
 -- THEME ------------------------------
 vim.cmd.colorscheme("nordic")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-
--- LSP ------------------------------
-local lsp = require("core.utils.lsp")
-lsp.setup_all()

@@ -1,4 +1,6 @@
 local function mason_lspconfig()
+  local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
+
   require('mason-lspconfig').setup({
     ensure_installed = {
       "lua_ls",
@@ -20,7 +22,7 @@ local function mason_lspconfig()
       -- this first function is the "default handler"
       -- it applies to every language server without a "custom handler"
       function(server_name)
-        require('lspconfig')[server_name].setup({})
+        require('lspconfig')[server_name].setup({ capabilities = blink_capabilities })
       end,
     }
   })
