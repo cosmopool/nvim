@@ -1,28 +1,31 @@
 local dap_config = function()
-  local dap = require("dap")
+  local found, dap = pcall(require, "dap")
+  if not found then return end
 
   dap.adapters.lldb = {
     type = "executable",
     command = "/usr/bin/lldb-dap",
     name = "lldb"
   }
+
   dap.configurations.zig = {
     {
-      name = "Launch New Build",
+      name = "Launch (build run)",
       type = "lldb",
       request = "launch",
-      program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}",
+      program = "zig build run",
       cwd = "${workspaceFolder}",
       stopOnEntry = false,
       args = {},
     }
   }
+
   dap.configurations.zig = {
     {
-      name = "Launch",
+      name = "Launch (default executable)",
       type = "lldb",
       request = "launch",
-      program = "zig build run",
+      program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}",
       cwd = "${workspaceFolder}",
       stopOnEntry = false,
       args = {},
@@ -46,29 +49,16 @@ local dap_config = function()
       request = "attach",
     }
   }
+end
 
-  local dapui = require("dapui")
+local dap_ui_config = function()
+  local found, dapui = pcall(require, "dapui")
+  if not found then return end
+
   dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
   dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
   dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 end
-
-  dap.adapters.lldb = {
-    type = "executable",
-    command = "/usr/bin/lldb-dap",
-    name = "lldb"
-  }
-  dap.configurations.zig = {
-    {
-      name = "Launch",
-      type = "lldb",
-      request = "launch",
-      program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}",
-      cwd = "${workspaceFolder}",
-      stopOnEntry = false,
-      args = {},
-    }
-  }
 
 local cmp_dap_config = function()
   local found, cmp = pcall(require, "cmp")
@@ -90,10 +80,14 @@ return {
   "mfussenegger/nvim-dap",
   tag = "0.10.0",
   enabled = vim.fn.has("win32") == 0,
+  config = dap_config,
   dependencies = {
     "rcarriga/nvim-dap-ui",
     opts = { floating = { border = "rounded" } },
-    config = dap_config,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    config = dap_ui_config,
   },
   -- {
   --   "rcarriga/cmp-dap",
