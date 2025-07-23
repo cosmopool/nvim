@@ -52,8 +52,11 @@ local dap_config = function()
 end
 
 local dap_ui_config = function()
-  local found, dapui = pcall(require, "dapui")
-  if not found then return end
+  local found_dapui, dapui = pcall(require, "dapui")
+  if not found_dapui then return end
+
+  local found_dap, dap = pcall(require, "dap")
+  if not found_dap then return end
 
   dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
   dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
