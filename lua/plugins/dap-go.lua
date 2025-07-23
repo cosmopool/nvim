@@ -39,7 +39,7 @@ end
 
 return {
   "leoluz/nvim-dap-go",
-  event = "InsertEnter",
+  ft = "go",
   config = config,
   dependencies = { "nvim-dap" },
 }
