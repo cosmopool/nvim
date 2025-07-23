@@ -64,6 +64,7 @@ end
 return {
   'xbase-lab/xbase',
   build = 'make install',
+  ft = { "swift", "m", "mm", "M", "pbxproj" },
   requires = {
     "neovim/nvim-lspconfig",
     "nvim-telescope/telescope.nvim",
