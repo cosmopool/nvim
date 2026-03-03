@@ -52,7 +52,7 @@ local setup = {
 return {
   {
     "akinsho/flutter-tools.nvim",
-    commit = "65b7399804315a1160933b64292d3c5330aa4e9f",
+    tag = "v2.2.0",
     ft = "dart",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -62,10 +62,7 @@ return {
       require("flutter-tools").setup(setup)
     end,
   },
-  {
-    "nvim-lua/plenary.nvim",
-    tag = "v0.1.4",
-  },
+  { "nvim-lua/plenary.nvim" },
   {
     "stevearc/dressing.nvim",
     tag = "v3.1.1",

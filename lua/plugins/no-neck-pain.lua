@@ -10,7 +10,7 @@ local config = {
 
 return {
   "shortcuts/no-neck-pain.nvim",
-  tag = "v2.4.5",
+  tag = "v2.5.3",
   config = function()
     require("no-neck-pain").setup(config)
   end,

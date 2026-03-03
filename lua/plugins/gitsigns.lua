@@ -27,7 +27,7 @@ end
 
 return {
   "lewis6991/gitsigns.nvim",
-  tag = "v1.0.2",
+  tag = "v2.0.0",
   enabled = vim.fn.executable "git" == 1,
   config = config,
   opts = {

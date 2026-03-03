@@ -1,4 +1,4 @@
 return {
   "nvim-lua/plenary.nvim",
-  commit = "857c5ac632080dba10aae49dba902ce3abf91b35",
+  commit = "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
 }

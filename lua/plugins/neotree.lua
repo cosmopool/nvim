@@ -152,7 +152,7 @@ local setup = {
 
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  tag = "3.34",
+  tag = "3.39.0",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
     { "nvim-tree/nvim-web-devicons" },

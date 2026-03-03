@@ -30,8 +30,8 @@ end
 
 return {
   {
-    "williamboman/mason.nvim",
-    tag = "v2.0.0",
+    "mason-org/mason.nvim",
+    tag = "v2.2.1",
     opts = { PATH = "append" },
     config = function()
       require("mason").setup({
@@ -46,8 +46,8 @@ return {
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
-    tag = "v2.0.0",
+    "mason-org/mason-lspconfig.nvim",
+    tag = "v2.1.0",
     config = mason_lspconfig,
   },
   {
@@ -58,13 +58,6 @@ return {
     },
     opts = {
       ensure_installed = { "shellcheck", "stylua" },
-    },
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    tag = "v2.5.1",
-    opts = {
-      ensure_installed = { "bash", "python", "codelldb" },
     },
   },
 }
