@@ -63,17 +63,6 @@ local dap_ui_config = function()
   dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 end
 
-local cmp_dap_config = function()
-  local found, cmp = pcall(require, "cmp")
-  if not found then return end
-
-  cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
-    sources = {
-      { name = "dap" },
-    },
-  })
-end
-
 local mason_dap_config = function()
   local mason_nvim_dap = require("mason-nvim-dap")
   mason_nvim_dap.setup()
@@ -92,10 +81,6 @@ return {
     "rcarriga/nvim-dap-ui",
     config = dap_ui_config,
   },
-  -- {
-  --   "rcarriga/cmp-dap",
-  --   config = cmp_dap_config,
-  -- },
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = { "nvim-dap" },
