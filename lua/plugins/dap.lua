@@ -99,7 +99,7 @@ return {
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = { "nvim-dap" },
-    tag = "v2.5.1",
+    tag = "v2.5.2",
     cmd = { "DapInstall", "DapUninstall" },
     config = mason_dap_config,
   },
