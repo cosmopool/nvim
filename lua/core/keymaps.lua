@@ -114,10 +114,6 @@ if Utils.is_available "telescope.nvim" then
   --vim.keymap.set("n", "<leader>fk", function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ")}) end)
 end
 
-if Utils.is_available "neo-tree.nvim" then
-  nnoremap("<leader>e", "<Cmd>Neotree<CR>")
-end
-
 if Utils.is_available "lspsaga.nvim" then
   nnoremap("grr", "<cmd>Lspsaga rename<cr>")
   nnoremap("ga", "<cmd>Lspsaga code_action<cr>")

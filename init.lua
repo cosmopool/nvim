@@ -1,6 +1,14 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
+
 -- PLUGINS ----------------------------
 local loaded_lazy, error = pcall(require, "core.lazy")
 if not loaded_lazy then vim.api.nvim_err_writeln("Failed to load Lazy!\n\n" .. error) end
