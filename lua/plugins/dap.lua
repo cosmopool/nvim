@@ -17,10 +17,7 @@ local dap_config = function()
       cwd = "${workspaceFolder}",
       stopOnEntry = false,
       args = {},
-    }
-  }
-
-  dap.configurations.zig = {
+    },
     {
       name = "Launch (default executable)",
       type = "lldb",
