@@ -1,41 +1,7 @@
----Enable and configure an LSP server
----@param server string The lsp server name
----@param opts? table The lsp server options to use
-function setup(server, opts)
-  if vim.fn.has("nvim-0.11") == 0 then
-    require("lspconfig")[server].setup(opts)
-    return
-  end
-
-  if not vim.tbl_isempty(opts) then
-    vim.lsp.config(server, opts)
-  end
-
-  vim.lsp.enable(server)
-end
-
 local function config()
   ---Lsp servers to configure
   ---This is a table with name as first element and the options as second
   local servers = {
-    dartls = {},
-    clangd = {},
-    bashls = {},
-    cmake = {},
-    gopls = {},
-    jsonls = {},
-    kotlin_language_server = {},
-    lemminx = {},
-    lua_ls = {},
-    mesonlsp = {},
-    pyright = {},
-    ruby_lsp = {},
-    rust_analyzer = {},
-    sqlls = {},
-    vls = {},
-    yamlls = {},
-    zk = {},
-    zls = {},
   }
 
   local lspconfig = require("lspconfig")
