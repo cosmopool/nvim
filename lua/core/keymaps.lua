@@ -152,14 +152,16 @@ if Utils.is_available "gitsings.nvim" then
 end
 
 if Utils.is_available "nvim-dap" then
+  nnoremap("<F2>", "<cmd>DapNew<CR>")
   nnoremap("<F5>", "<cmd>DapContinue<CR>")
-  nnoremap("<F17>", "<cmd>DapTerminate<CR>")
-  nnoremap("<F29>", "<cmd>lua require('dap').restart_frame()")
+  nnoremap("<F3>", "<cmd>DapTerminate<CR>")
+  nnoremap("<F8>", "<cmd>DapRestartFrame<CR>")
   nnoremap("<F6>", "<cmd>DapPause<CR>")
-  nnoremap("<F9>", "<cmd>lua require('dap').toggle_breakpoint()<CR>")
+  nnoremap("<F9>", "<cmd>DapToggleBreakpoint<CR>")
   nnoremap("<F10>", "<cmd>DapStepOver<CR>")
   nnoremap("<F11>", "<cmd>DapStepInto<CR>")
-  nnoremap("<F23>", "<cmd>DapStepOut<CR>")
+  nnoremap("<F12>", "<cmd>DapStepOut<CR>")
+  nnoremap("<leader>dn", "<cmd>DapNew<CR>")
   nnoremap("<leader>db", "<cmd>DapToggleBreakpoint<CR>")
   nnoremap("<leader>dB", "<cmd>lua require('dap').clear_breakpoints()")
   nnoremap("<leader>dc", "<cmd>DapContinue<CR>")
