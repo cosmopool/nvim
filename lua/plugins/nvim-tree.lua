@@ -17,7 +17,7 @@ return {
   "nvim-tree/nvim-tree.lua",
   version = "*",
   config = function()
-    vim.api.nvim_set_keymap("n", "<leader>e", "<CMD>NvimTreeOpen<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<leader>e", "<CMD>NvimTreeFindFile<CR>", { noremap = true, silent = true })
 
     require("nvim-tree").setup({
       on_attach = "default",
