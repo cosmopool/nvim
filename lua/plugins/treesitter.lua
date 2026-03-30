@@ -43,11 +43,10 @@ local setup = {
 
 return {
   "nvim-treesitter/nvim-treesitter",
-  -- commit = "58030e6d6f1d6609b43dcb765d54539dcc6a1a76",
-  tag = "v0.10.0",
+  commit = "7caec274fd19c12b55902a5b795100d21531391f",
   lazy = false,
   priority = 1000,
   config = function()
-    require("nvim-treesitter.configs").setup(setup)
+    require("nvim-treesitter").setup(setup)
   end,
 }
