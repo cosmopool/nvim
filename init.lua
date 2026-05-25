@@ -19,8 +19,6 @@ require("core.options")
 require("core.keymaps")
 
 -- THEME ------------------------------
-vim.cmd.colorscheme("nordic")
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 -- dap debugger colors
 vim.api.nvim_set_hl(0, "DapBreakpointFG", { fg = "#D90000", bg = "#471615" })
 vim.api.nvim_set_hl(0, "DapBreakpoint", { bg = "#471615" })
@@ -88,16 +86,10 @@ dap.configurations.c = {
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
     args = {},
-
-    -- 💀
     -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
-    --
     --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-    --
     -- Otherwise you might get the following error:
-    --
     --    Error on launch: Failed to attach to the target process
-    --
     -- But you should be aware of the implications:
     -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
     runInTerminal = false,
