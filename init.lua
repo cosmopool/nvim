@@ -18,6 +18,11 @@ if vim.loader then vim.loader.enable() end
 require("core.options")
 require("core.keymaps")
 
+-- NEOVIDE ---------------------------
+if vim.g.neovide then
+  vim.o.guifont = "Hack:h12"
+end
+
 -- THEME ------------------------------
 -- dap debugger colors
 vim.api.nvim_set_hl(0, "DapBreakpointFG", { fg = "#D90000", bg = "#471615" })
